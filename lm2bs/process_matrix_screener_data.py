@@ -13,9 +13,6 @@ import tifffile
 import re
 import h5py
 from typing import Tuple, Union, List
-from skimage.measure import block_reduce
-from copytree import copytree
-import tqdm
 import time
 from functools import partial
 from concurrent.futures import ThreadPoolExecutor
