@@ -4,9 +4,6 @@ If the fields to be scanned are only sparsely populated with regions of interest
 from this scan are then analyzed to find fields that contain the objects of interest and only those fields
 are imaged in the slower, high-resolution second pass.
 
-
-
-
 To set up a selective acquisition workflow, follow these steps:
 
 * enable the Leica CAM interface (this is a check box in Matrix Screener). This starts a TCP server on port 8895 of the microscope computer which exposes the Leica CAM interface. Note that due to a bug in some Matrix Screener versions, at least one of scan fields needs to have a scan job assigned for the connection to work.

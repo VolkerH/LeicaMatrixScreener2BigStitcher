@@ -1,4 +1,4 @@
-# LM2BS Convert Leica Matrix Screener acquistions to Big Stitcher projects
+# LM2BS -- Convert Leica Matrix Screener acquistions to Big Stitcher projects
 
 ![workflow_overview](./illustrations/workflow_overview.JPG)
 
@@ -13,7 +13,7 @@ The folder `fiji_batch_scripting` contains some ImageJ/Fiji Jython scripts that 
 
 In addition, this repo contains some brief application notes on: 
 
-* how to [set up a tile scan using Leica Matrix Screener](./tile_scan_leica_matrixscreener.md), and 
+* how to [set up a tile scan using Leica Matrix Screener](./tile_scan_leica_matrixscreener.md), and
 * how to perform [selective high-resolution acquisition](./selective_acquisition/selective_acquisition.md) of fields that show some structure of interest in a low-resoulution pre-scan (using the Leica CAM interface).
 
 ## Installation & Start
