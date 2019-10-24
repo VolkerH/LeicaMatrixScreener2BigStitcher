@@ -48,9 +48,9 @@ This is important such that the anisotropy is accounted for in the big data view
 
 ### Stitching in Big Stitcher
 
-![Launch Big Stitcher](./illustrations/invoke_bs.jpg)
-
-Follow the instructions on the Big Stitcher website to stitch one of the generated `.xml` project files, you can start by [opening an existing dataset](https://imagej.net/BigStitcher_Open_existing). 
+* Start Fiji and install Big Stitcher by activating the Big Stitcher update site.
+* Follow the instructions on the Big Stitcher website to stitch one of the generated `.xml` project files. As the big data viewer project files have already been created you can skip the
+instructions on importing and start with [opening an existing dataset](https://imagej.net/BigStitcher_Open_existing). 
 
 ### Batch Stitching
 
