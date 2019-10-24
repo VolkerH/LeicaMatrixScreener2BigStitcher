@@ -1,6 +1,6 @@
 # Tools for creating a BigStitcher/BigDataViewer .xml/h5 project file
 # from Leica Matrix Screener .ome.tiff output
-# 
+#
 # Volker . Hilsenstein @ Monash dot Edu
 # Sep/Oct 2019
 # License BSD-3
@@ -44,22 +44,36 @@ def get_meta_from_matrix_ome_tif(filename):
     return a dictionary with some of the metadata
     """
     tfile = tifffile.TiffFile(filename)
-    # print(tfile)
-    # note: previous versions of tifffile required
-    # thr following step:cd
-    # _meta = xmltodict.parse(tfile.ome_metadata)
     _meta = tfile.ome_metadata
     meta = {}
-    meta["Size X"] = _meta["Image"]["Pixels"]["SizeX"]
-    meta["Size Y"] = _meta["Image"]["Pixels"]["SizeY"]
-    meta["PhysicalSize X"] = float(_meta["Image"]["Pixels"]["PhysicalSizeX"])
-    meta["PhysicalSize Y"] = float(_meta["Image"]["Pixels"]["PhysicalSizeY"])
-    meta["Stage X"] = float(
-        _meta["Image"]["Pixels"]["Plane"]["StagePosition"]["PositionX"]
-    )
-    meta["Stage Y"] = float(
-        _meta["Image"]["Pixels"]["Plane"]["StagePosition"]["PositionY"]
-    )
+    try:  # this works for tiffile versions <2019.2.22 including the widespread 0.15 version
+        meta["Size X"] = int(_meta["Image"]["Pixels"]["SizeX"])
+        meta["Size Y"] = int(_meta["Image"]["Pixels"]["SizeY"])
+        meta["PhysicalSize X"] = float(_meta["Image"]["Pixels"]["PhysicalSizeX"])
+        meta["PhysicalSize Y"] = float(_meta["Image"]["Pixels"]["PhysicalSizeY"])
+        meta["Stage X"] = float(
+            _meta["Image"]["Pixels"]["Plane"]["StagePosition"]["PositionX"]
+        )
+        meta["Stage Y"] = float(
+            _meta["Image"]["Pixels"]["Plane"]["StagePosition"]["PositionY"]
+        )
+    except TypeError:
+        # tifffile version 2019.2.22 introduced a breaking change for ome_metadata
+        # we now need to parse the xml ourselves and some of the keys are different
+        import xmltodict
+
+        tmp = xmltodict.parse(_meta)
+        meta["Size X"] = int(tmp["OME"]["Image"]["Pixels"]["@SizeX"])
+        meta["Size Y"] = int(tmp["OME"]["Image"]["Pixels"]["@SizeY"])
+        meta["PhysicalSize X"] = float(tmp["OME"]["Image"]["Pixels"]["@PhysicalSizeX"])
+        meta["PhysicalSize Y"] = float(tmp["OME"]["Image"]["Pixels"]["@PhysicalSizeY"])
+        meta["Stage X"] = float(
+            tmp["OME"]["Image"]["Pixels"]["Plane"]["StagePosition"]["@PositionX"]
+        )
+        meta["Stage Y"] = float(
+            tmp["OME"]["Image"]["Pixels"]["Plane"]["StagePosition"]["@PositionY"]
+        )
+
     return meta
 
 
@@ -169,7 +183,7 @@ def save_files_for_bigstitcher(
                 name_affine=f"tile {tile_nr} translation",
                 voxel_size_xyz=(meta["PhysicalSize X"], meta["PhysicalSize Y"], zspacing),
                 voxel_units="um",
-                calibration=(1, 1, zspacing/meta["PhysicalSize X"]),
+                calibration=(1, 1, zspacing / meta["PhysicalSize X"]),
             )
         if projected:
             outstack = np.expand_dims(project_func(stack, axis=0), axis=0)
@@ -320,5 +334,4 @@ def test_populate_file_df():
 def test_str():
     mp = Matrix_Mosaic_Processor("c:/Users/Volker/Data/Testset/")
     print(mp)
-
 
