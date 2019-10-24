@@ -1,5 +1,3 @@
-# CAUTION - WORK IN PROGRESS ... 
-
 # LM2BS Convert Leica Matrix Screener acquistions to Big Stitcher projects
 
 ![workflow_overview](./illustrations/workflow_overview.JPG)
@@ -52,19 +50,19 @@ This is important such that the anisotropy is accounted for in the big data view
 
 ![Launch Big Stitcher](./illustrations/invoke_bs.jpg)
 
-Follow the instrcutions on the Big Stitcher Website to stitch one of the generated `.xml`, you can start by [opening an existing dataset](https://imagej.net/BigStitcher_Open_existing). 
-
+Follow the instructions on the Big Stitcher website to stitch one of the generated `.xml` project files, you can start by [opening an existing dataset](https://imagej.net/BigStitcher_Open_existing). 
 
 ### Batch Stitching
 
 The folder [./fiji_batch_stitching](../fiji_batch_stitching) contains Fiji scripts that can serve as a 
 starting point batch process the stitching, fusion and export as tif for the Big Stitcher projects created
-with `lm2bs`.
+with `lm2bs`. Open them in the Fiji script editor and edit the parameters in the source code.
 
 ## Limitations / TODO
 
 * currently only a single channel is supported. Extending this to multiple channels should be straightforward, but I do not have a dataset to test this on
 * the code currently assumes that each `field--*` folder only contains images from a single scan job (this can be identified by the `--J` part of the file name). If there is a mixture of different scan jobs (e.g. files with `--J08` and `--J09`) I suspect there will be issues with reading the stacks. This can occur for example if a software autofocus routine is run (for some versions of Matrix Screener the autofocus images are saved in the same folder). The fix in the code (filtering file names based on job number) should be straightforward.
+* turn this into a pip installable package
 
 ## Acknowledgements
 
