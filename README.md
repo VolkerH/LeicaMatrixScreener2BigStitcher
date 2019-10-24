@@ -26,14 +26,12 @@ Create a python environment using `conda` and install dependencies (only needed 
 * Start a terminal or cmd window
 * Create a new conda environment `conda env create -n lm2bs python=3.6`
 * Activate the environment `conda activate lm2bs`
-* `conda install -c conda-forge scikit-image pandas tifffile tifffolder pyqt h5py`
+* `conda install -c conda-forge scikit-image pandas tifffile tifffolder pyqt h5py xmltodict`
 
 Startup
 
 * activate the conde environment `conda activate lm2bs`
 * in the `lm2bs`  folder execute `python lm2bs_gui.py`
-
-
 
 ## Usage of LM2BS GUI:
 
@@ -51,6 +49,11 @@ This is important such that the anisotropy is accounted for in the big data view
 * After selection, start processing by pressing the button at the bottom.
 
 ### Stitching in Big Stitcher
+
+![Launch Big Stitcher](./illustrations/invoke_bs.jpg)
+
+Follow the instrcutions on the Big Stitcher Website to stitch one of the generated `.xml`, you can start by [opening an existing dataset](https://imagej.net/BigStitcher_Open_existing). 
+
 
 ### Batch Stitching
 
