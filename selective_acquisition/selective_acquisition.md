@@ -14,7 +14,7 @@ To set up a selective acquisition workflow, follow these steps:
 * define a high-resolution scan job and test it on a few fields.
 * assign the low-resolution scan job to all fields that you want to scan.
 
-Modify the sample python app (TODO) to your needs
+Modify the sample python notebook in this folder to your needs:
 
 * adjust the IP address of the CAM server and the basepath where Leica Matrix Screener saves the output files,
 * adjust the name of the high resolution scan job that is assigned,
