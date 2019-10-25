@@ -31,6 +31,11 @@ Startup
 * activate the conde environment `conda activate lm2bs`
 * in the `lm2bs`  folder execute `python lm2bs_gui.py`
 
+## Sample Dataset
+
+A sample dataset in Leica Matrix screener format is available for download [using this dropbox link](https://www.dropbox.com/sh/fsfxwtqjkrx4ioh/AAC8ngYmnJCApYqdK5Gtr0Nra?dl=0). You need to download the entire folder named `chamber--U05--V03`. This is a single well from a multi-well
+confocal scan. For additional information and link to the stitched dataset refer to the Acknowledgements section below.
+
 ## Usage of LM2BS GUI:
 
 The GUI should be more or less self explanatory.
