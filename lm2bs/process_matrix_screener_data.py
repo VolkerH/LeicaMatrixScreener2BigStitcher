@@ -174,8 +174,9 @@ def save_files_for_bigstitcher(
         )  # 2247191 #2_000_000
 
         if volume:
+            _tmp_stack = np.copy(stack)
             bdv_vol_writer.append_view(
-                stack,
+                _tmp_stack,
                 time=0,
                 channel=0,
                 m_affine=affine,
