@@ -74,3 +74,8 @@ with `lm2bs`. Open them in the Fiji script editor and edit the parameters in the
 * The sample dataset of drosophila ovarioles was jointly captured with André Nogueira Alves from the [the Mirth lab at Monash University](http://themirthlab.org/) who did the sample preparation. One of the stitched sample volumes is availabe under a [CC-BY license on figshare](https://figshare.com/articles/_/9985568).
 * This tool leverages prior efforts by Talley Lambert and Nikita Valdimirov, namely [npy2bdv](https://github.com/nvladimus/npy2bdv) and [tifffolder](https://github.com/tlambert03/tifffolder). npy2bdv is bundled in this repo for easier distribution.
 * [Big Stitcher from the Preibisch Lab](https://www.nature.com/articles/s41592-019-0501-0)
+
+
+## Related projects
+
+I have developed a similar tool for files from the LaVision Biotec Ultramicroscope, which has its own [Github repo](https://github.com/VolkerH/Ultramicroscope2BigStitcher).
